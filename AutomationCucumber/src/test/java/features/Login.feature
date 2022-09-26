@@ -12,4 +12,3 @@ Feature: Application Login
       | username                |  | password   |
       | raul.al.go.96@gmail.com |  | MyPassword |
 
-
