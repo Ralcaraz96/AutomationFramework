@@ -6,11 +6,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-
 public class HomePageStepDefinition {
     TestSetup testSetup;
     HomePage homePage;
@@ -31,12 +26,11 @@ public class HomePageStepDefinition {
 
     }
 
-    @Then("^User logins in with username and password$")
-    public void user_logins_in_with_username_and_password() throws Exception {
+    @Then("^User logins in with (.+) and (.+)$")
+    public void user_logins_in_with_username_and_password(String username, String password) throws Exception {
         // Write code here that turns the phrase above into concrete actions
-        homePage.logIn();
+        homePage.logIn(username, password);
     }
-
 
     @Then("User is in Account page.")
     public void userIsInAccountPage() {
