@@ -14,27 +14,25 @@ import java.io.IOException;
 
 public class Hooks {
     TestSetup testSetup;
-    public Hooks(TestSetup testSetup)
-    {
+
+    public Hooks(TestSetup testSetup) {
 
         this.testSetup = testSetup;
     }
+
     @After
-    public void AfterScenario() throws IOException
-    {
+    public void AfterScenario() throws IOException {
 
         testSetup.testBase.WebDriverManager().quit();
 
     }
 
     @AfterStep
-    public void AddScreenshot(Scenario scenario) throws IOException
-    {
-        WebDriver driver =testSetup.testBase.WebDriverManager();
-        if(scenario.isFailed())
-        {
+    public void AddScreenshot(Scenario scenario) throws IOException {
+        WebDriver driver = testSetup.testBase.WebDriverManager();
+        if (scenario.isFailed()) {
             //screenshot
-            File sourcePath= 	((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            File sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
             scenario.attach(fileContent, "image/png", "image");
 

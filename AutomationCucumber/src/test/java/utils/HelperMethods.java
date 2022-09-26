@@ -4,14 +4,16 @@ package utils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import java.util.NoSuchElementException;
+
 import static org.junit.Assert.assertTrue;
 
 
 public class HelperMethods {
     public static WebDriver driver;
-    public HelperMethods(WebDriver driver)
-    {
+
+    public HelperMethods(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -23,6 +25,7 @@ public class HelperMethods {
             Assert.fail();
         }
     }
+
     public static void click(By by) {
         try {
             driver.findElement(by).click();

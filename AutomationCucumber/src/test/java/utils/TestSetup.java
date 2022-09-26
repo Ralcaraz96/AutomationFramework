@@ -10,6 +10,7 @@ public class TestSetup {
     public TestBase testBase;
     public HelperMethods helperMethods;
     public PageObjectManager pageObjectManager;
+
     public TestSetup() throws IOException {
         testBase = new TestBase();
         pageObjectManager = new PageObjectManager(testBase.WebDriverManager());
