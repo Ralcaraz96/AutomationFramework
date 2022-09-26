@@ -18,17 +18,21 @@ public class HomePage {
 
     public HomePage(TestSetup driver) {
     }
+
     public void homePageIsDisplayed() {
         HelperMethods.isEleVisible(SignInBtn);
     }
+
     public void clickSignIn() {
         HelperMethods.click(SignInBtn);
     }
+
     public void logIn(String username, String password) {
         HelperMethods.enterText(EmailTextBox, username);
         HelperMethods.enterText(PasswordTextBox, password);
         HelperMethods.click(LoginBtn);
     }
+
     public void isAccountPageDisplayed() {
         HelperMethods.isEleVisible(NavigationPage);
     }
