@@ -40,9 +40,10 @@ public class HomePage {
         HelperMethods.isEleVisible(NavigationPage);
     }
 
-    public void setInvalidEmail(String invalidEmail) {
+    public void setInvalidEmail(String invalidEmail) throws InterruptedException {
         HelperMethods.enterText(CreateEmailTextBox,invalidEmail);
         HelperMethods.click(CreateAccountBtn);
+        Thread.sleep(10000);
     }
    public void verifyErrorMessage(String message){
         String errorMessage = HelperMethods.getText(ErrorMessage);

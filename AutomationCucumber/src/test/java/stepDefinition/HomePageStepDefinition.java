@@ -35,17 +35,17 @@ public class HomePageStepDefinition {
         homePage.logIn(username, password);
     }
 
-    @Then("User is in Account page.")
+    @Then("^User is in Account page.$")
     public void user_is_in_account_page() {
         homePage.isAccountPageDisplayed();
     }
 
-    @Then("User submits invalid (.+)")
-    public void user_submits_invalid_email(String invalidEmail) {
+    @Then("^User submits invalid (.+)$")
+    public void user_submits_invalid_email(String invalidEmail) throws InterruptedException {
         homePage.setInvalidEmail(invalidEmail);
     }
 
-    @Then("User validates error (.+)")
+    @Then("^User validates error (.+)$")
     public void user_validates_error_message(String message) {
         homePage.verifyErrorMessage(message);
     }
