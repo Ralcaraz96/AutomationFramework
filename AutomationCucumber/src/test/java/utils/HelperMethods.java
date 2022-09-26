@@ -43,4 +43,13 @@ public class HelperMethods {
             Assert.fail();
         }
     }
+    public static String getText(By by) {
+        try {
+            return driver.findElement(by).getText();
+        } catch (NoSuchElementException e) {
+            driver.close();
+            Assert.fail();
+        }
+        return driver.findElement(by).getText();
+    }
 }
