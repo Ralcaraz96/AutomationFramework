@@ -1,24 +1,25 @@
 package PageObjects;
 
-import Utils.Data;
-import Utils.HelperMethods;
-import Utils.TestSetup;
-import org.junit.Assert;
-import org.junit.Test;
+import io.cucumber.java.ro.Si;
+import utils.Data;
+import utils.HelperMethods;
+import utils.TestSetup;
 import org.openqa.selenium.By;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.openqa.selenium.WebDriver;
 
 public class HomePage {
+    // Constructor.
+    TestSetup testSetup;
+
     // Home Page Elements.
     By SignInBtn = By.xpath("//a[normalize-space()='Sign in']");
     By EmailTextBox = By.id("email");
     By PasswordTextBox = By.id("passwd");
-
     By LoginBtn = By.id("SubmitLogin");
-
     By NavigationPage = By.xpath("//span[@class='navigation_page']");
+
+    public HomePage(TestSetup driver) {
+    }
 
 
     public void homePageIsDisplayed() {
@@ -27,7 +28,6 @@ public class HomePage {
 
     public void clickSignIn() {
         HelperMethods.click(SignInBtn);
-        HelperMethods.isEleVisible(EmailTextBox);
     }
 
     public void logIn() {
