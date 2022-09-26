@@ -1,4 +1,5 @@
 Feature: Application Login
+
   @Login
 
 
@@ -8,7 +9,7 @@ Feature: Application Login
     Then User logins in with <username> and <password>
     Then User is in Account page.
     Examples:
-    |username||password|
-    |raul.al.go.96@gmail.com||MyPassword|
+      | username                |  | password   |
+      | raul.al.go.96@gmail.com |  | MyPassword |
 
 

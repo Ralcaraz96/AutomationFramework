@@ -6,14 +6,17 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+
 public class HomePageStepDefinition {
     TestSetup testSetup;
     HomePage homePage;
     public WebDriver driver;
+
     public HomePageStepDefinition(TestSetup testSetup) {
         this.testSetup = testSetup;
         this.homePage = testSetup.pageObjectManager.getHomePage();
     }
+
     @Given("^User is on AutomationPractice page$")
     public void user_is_on_AutomationPractice_page() throws Exception {
         homePage.homePageIsDisplayed();
