@@ -4,7 +4,6 @@ import org.junit.runner.RunWith;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
-
 // Feature file being called.
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -17,5 +16,4 @@ import io.cucumber.junit.CucumberOptions;
                 "rerun:target/failed_scenarios.txt"}
 )
 public class testRunner {
-
 }

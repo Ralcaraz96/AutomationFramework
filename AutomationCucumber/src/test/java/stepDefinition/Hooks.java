@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public class Hooks {
     TestSetup testSetup;
-
     public Hooks(TestSetup testSetup)
     {
 
@@ -40,7 +39,5 @@ public class Hooks {
             scenario.attach(fileContent, "image/png", "image");
 
         }
-
     }
-
 }
