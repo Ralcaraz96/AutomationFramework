@@ -1,5 +1,7 @@
 Feature: Application Login
 
+  @Login
+
 
   Scenario: Home page default login
     Given User is on AutomationPractice page
