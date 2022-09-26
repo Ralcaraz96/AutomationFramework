@@ -1,9 +1,9 @@
 package PageObjects;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import utils.HelperMethods;
 import utils.TestSetup;
-import org.openqa.selenium.By;
 
 public class HomePage {
     // Constructor.
@@ -40,12 +40,15 @@ public class HomePage {
         HelperMethods.isEleVisible(NavigationPage);
     }
 
-    public void setInvalidEmail(String invalidEmail) {
-        HelperMethods.enterText(CreateEmailTextBox,invalidEmail);
+    public void setInvalidEmail(String invalidEmail) throws InterruptedException {
+        HelperMethods.enterText(CreateEmailTextBox, invalidEmail);
         HelperMethods.click(CreateAccountBtn);
+        HelperMethods.waitForElement(ErrorMessage, 20, 2);
     }
-   public void verifyErrorMessage(String message){
+
+    public void verifyErrorMessage(String message) throws InterruptedException {
         String errorMessage = HelperMethods.getText(ErrorMessage);
-       Assert.assertEquals(errorMessage, message);
-   }
+        HelperMethods.isEleVisible(ErrorMessage);
+        Assert.assertEquals(errorMessage, message);
+    }
 }

@@ -10,4 +10,4 @@ Feature: Create Account
 
     Examples:
       | email |  | message                |
-      | abcd  |  | Invalid email address. |
+      | invalidEmail  |  | Invalid email address. |

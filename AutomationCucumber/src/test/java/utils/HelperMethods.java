@@ -4,8 +4,13 @@ package utils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 
+import java.time.Duration;
 import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
@@ -51,5 +56,14 @@ public class HelperMethods {
             Assert.fail();
         }
         return driver.findElement(by).getText();
+    }
+
+    public static void waitForElement(By by, Integer waitFor, Integer pollingTime)
+    {
+        FluentWait wait = new FluentWait(driver);
+        wait.withTimeout(Duration.ofSeconds(waitFor));
+        wait.pollingEvery(Duration.ofSeconds(pollingTime));
+        wait.ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
     }
 }

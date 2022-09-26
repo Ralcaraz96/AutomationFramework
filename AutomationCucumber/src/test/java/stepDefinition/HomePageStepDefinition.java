@@ -40,13 +40,13 @@ public class HomePageStepDefinition {
         homePage.isAccountPageDisplayed();
     }
 
-    @Then("User submits invalid (.+)")
-    public void user_submits_invalid_email(String invalidEmail) {
+    @Then("^User submits invalid (.+)$")
+    public void user_submits_invalid_email(String invalidEmail) throws InterruptedException {
         homePage.setInvalidEmail(invalidEmail);
     }
 
-    @Then("User validates error (.+)")
-    public void user_validates_error_message(String message) {
+    @Then("^User validates error (.+)$")
+    public void user_validates_error_message(String message) throws InterruptedException {
         homePage.verifyErrorMessage(message);
     }
 }
