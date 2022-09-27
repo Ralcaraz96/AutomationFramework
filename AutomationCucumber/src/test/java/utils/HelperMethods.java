@@ -47,6 +47,13 @@ public class HelperMethods {
             driver.close();
             Assert.fail();
         }
+        public static void selectDropdown(By by, String date) {//dropdown :S
+            try {
+                driver.findElement(by).selectByValue(date);
+            } catch (NoSuchElementException e) {
+                driver.close();
+                Assert.fail();
+            }
     }
     public static String getText(By by) {
         try {

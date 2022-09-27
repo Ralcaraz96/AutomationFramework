@@ -46,6 +46,13 @@ public class HomePage {
         HelperMethods.waitForElement(ErrorMessage, 20, 2);
     }
 
+
+    public void setValidEmail(String validEmail) throws InterruptedException {
+        HelperMethods.enterText(CreateEmailTextBox, validEmail);
+        HelperMethods.click(CreateAccountBtn);
+    }
+
+
     public void verifyErrorMessage(String message) throws InterruptedException {
         String errorMessage = HelperMethods.getText(ErrorMessage);
         HelperMethods.isEleVisible(ErrorMessage);
