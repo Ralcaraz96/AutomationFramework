@@ -10,7 +10,7 @@ import utils.TestSetup;
 public class HomePageStepDefinition {
     TestSetup testSetup;
     HomePage homePage;
-    public WebDriver driver;
+
 
     public HomePageStepDefinition(TestSetup testSetup) {
         this.testSetup = testSetup;
@@ -45,7 +45,7 @@ public class HomePageStepDefinition {
         homePage.setInvalidEmail(invalidEmail);
     }
     @Then("^User submits valid (.+)$")
-    public void user_submits_valid_Email(String validEmail) throws InterruptedException {
+    public void user_submits_valid_Email(String validEmail) {
         homePage.setValidEmail(validEmail);
     }
     @Then("^User validates error (.+)$")

@@ -10,7 +10,7 @@ import utils.TestSetup;
 public class CreateAccountPageStepDefinition {
     TestSetup testSetup;
     CreateAccountPage createAccountPage;
-    public WebDriver driver;
+
 
     public CreateAccountPageStepDefinition(TestSetup testSetup) {
         this.testSetup = testSetup;

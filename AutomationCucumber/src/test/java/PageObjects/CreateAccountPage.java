@@ -15,7 +15,7 @@ public class CreateAccountPage {
     By CreateAccountPageScreen = By.id("authentication");
 
     //Personal Information
-    By TitleMrBtn = By.xpath("(//input[@id='id_gender1'])[1]");
+    By TitleMrBtn = By.id("id_gender1");
     By FirstNameTextBox = By.id("customer_firstname");
     By LastNameTextBox = By.id("customer_lastname");
     By EmailTextBoxPersonalInfo = By.id("email");
@@ -46,17 +46,22 @@ public class CreateAccountPage {
     // Create Account Page Methods.
     public CreateAccountPage(TestSetup driver) {
     }
-    public void CreateAccountPageIsDisplayed() {HelperMethods.isEleVisible(CreateAccountPageScreen);
+    public void CreateAccountPageIsDisplayed() {
+        HelperMethods.waitForElement(FirstNameTextBox);
     }
     public void PersonalInformation(String firstName, String lastName, String passwordPi, String days,
                                     String months, String years) {
+        //HelperMethods.waitForElement(FirstNameTextBox);
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBox, firstName);
         HelperMethods.enterText(LastNameTextBox, lastName);
         HelperMethods.click(EmailTextBoxPersonalInfo);
         HelperMethods.enterText(PasswordTextBoxPersonalInfo, passwordPi);
+        HelperMethods.click(DayDropDownDateOfBirth);
         HelperMethods.selectDropdown(DayDropDownDateOfBirth, days);
+        HelperMethods.click(MonthDropDownDateOfBirth);
         HelperMethods.selectDropdown(MonthDropDownDateOfBirth, months);
+        HelperMethods.click(YearDropDownDateOfBirth);
         HelperMethods.selectDropdown(YearDropDownDateOfBirth, years);
         HelperMethods.click(NewsletterCheckBox);
         HelperMethods.click(SpecialOffersCheckBox);

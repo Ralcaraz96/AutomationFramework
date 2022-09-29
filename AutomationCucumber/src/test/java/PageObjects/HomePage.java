@@ -43,7 +43,7 @@ public class HomePage {
     public void setInvalidEmail(String invalidEmail) {
         HelperMethods.enterText(CreateEmailTextBox, invalidEmail);
         HelperMethods.click(CreateAccountBtn);
-        HelperMethods.waitForElement(ErrorMessage, 20, 2);
+        HelperMethods.waitForElement(ErrorMessage);
     }
 
     public void setValidEmail(String validEmail) {
@@ -52,9 +52,8 @@ public class HomePage {
 
     }
 
-    public void verifyErrorMessage(String message) throws InterruptedException {
-        String errorMessage = HelperMethods.getText(ErrorMessage);
+    public void verifyErrorMessage(String message) {
         HelperMethods.isEleVisible(ErrorMessage);
-        Assert.assertEquals(errorMessage, message);
+        Assert.assertEquals(HelperMethods.getText(ErrorMessage), message);
     }
 }
