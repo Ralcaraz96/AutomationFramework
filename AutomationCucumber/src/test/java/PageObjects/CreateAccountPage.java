@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import utils.HelperMethods;
 import utils.TestSetup;
 
+import java.time.Year;
+
 public class CreateAccountPage {
     TestSetup testSetup;
 
@@ -18,9 +20,9 @@ public class CreateAccountPage {
     By LastNameTextBox = By.id("customer_lastname");
     By EmailTextBoxPersonalInfo = By.id("email");
     By PasswordTextBoxPersonalInfo = By.id("passwd");
-    By DateOfBirthDayDropDown = By.id("days");
-    By DateOfBirthMonthDropDown = By.id("months");
-    By DateOfBirthYearDropDown = By.id("years");
+    By DayDropDownDateOfBirth = By.id("days");
+    By MonthDropDownDateOfBirth = By.id("months");
+    By YearDropDownDateOfBirth = By.id("years");
     By NewsletterCheckBox = By.id("newsletter");
     By SpecialOffersCheckBox = By.id("optin");
 
@@ -39,7 +41,7 @@ public class CreateAccountPage {
 
     By MobilePhoneTextBoxAddress = By.id("phone_mobile");
     By AliasTextBoxAddress = By.id("alias");
-    By RegisterBtnAddress = By.id("submitAccount");
+    By RegisterAddressBtn = By.id("submitAccount");
 
     // Create Account Page Methods.
     public CreateAccountPage(TestSetup driver) {
@@ -53,9 +55,9 @@ public class CreateAccountPage {
         HelperMethods.enterText(LastNameTextBox, lastName);
         HelperMethods.click(EmailTextBoxPersonalInfo);
         HelperMethods.enterText(PasswordTextBoxPersonalInfo, passwordPi);
-        HelperMethods.selectDropdown(DateOfBirthDayDropDown, days);
-        HelperMethods.selectDropdown(DateOfBirthMonthDropDown, months);
-        HelperMethods.selectDropdown(DateOfBirthYearDropDown, years);
+        HelperMethods.selectDropdown(DayDropDownDateOfBirth, days);
+        HelperMethods.selectDropdown(MonthDropDownDateOfBirth, months);
+        HelperMethods.selectDropdown(YearDropDownDateOfBirth, years);
         HelperMethods.click(NewsletterCheckBox);
         HelperMethods.click(SpecialOffersCheckBox);
     }
@@ -77,7 +79,7 @@ public class CreateAccountPage {
         HelperMethods.enterText(MobilePhoneTextBoxAddress, phoneMobile);
         HelperMethods.enterText(AliasTextBoxAddress, alias);
     }
-    public void userSubmitPersonalInformationAndCreateAnAccount() {
-        HelperMethods.click(RegisterBtnAddress);
+    public void userClickSubmitPersonalInformationAndCreateAnAccount() {
+        HelperMethods.click(RegisterAddressBtn);
     }
 }

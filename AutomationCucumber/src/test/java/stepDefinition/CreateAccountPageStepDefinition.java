@@ -17,8 +17,8 @@ public class CreateAccountPageStepDefinition {
         this.createAccountPage = testSetup.pageObjectManager.getCreateAccountPage();
     }
 
-    @Then("^User log in create an account page.$")
-    public void user_log_in_create_an_account_page() {
+    @Then("^User is in create an account page.$")
+    public void user_is_in_create_an_account_page() {
         createAccountPage.CreateAccountPageIsDisplayed();
     }
     @And("^User provides personal information (.+), (.+), (.+) and date of birth (.+), (.+), (.+)$")
@@ -34,7 +34,7 @@ public class CreateAccountPageStepDefinition {
                 country, additionalinfo, phone, phoneMobile, alias);
     }
     @Then("^User submit personal information and create an account$")
-    public void userSubmitPersonalInformationAndCreateAnAccount() {
-        createAccountPage.userSubmitPersonalInformationAndCreateAnAccount();
+    public void userClickSubmitPersonalInformationAndCreateAnAccount() {
+        createAccountPage.userClickSubmitPersonalInformationAndCreateAnAccount();
     }
 }
