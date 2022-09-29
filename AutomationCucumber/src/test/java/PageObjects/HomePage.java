@@ -9,24 +9,24 @@ public class HomePage {
     // Constructor.
     TestSetup testSetup;
     // Home Page Elements.
-    By SignInBtn = By.xpath("//a[normalize-space()='Sign in']");
+    static By SignInBtn = By.xpath("//a[normalize-space()='Sign in']");
     By EmailTextBox = By.id("email");
     By PasswordTextBox = By.id("passwd");
     By LoginBtn = By.id("SubmitLogin");
     By NavigationPage = By.xpath("//span[@class='navigation_page']");
-    By CreateEmailTextBox = By.id("email_create");
-    By CreateAccountBtn = By.id("SubmitCreate");
+    static By CreateEmailTextBox = By.id("email_create");
+    static By CreateAccountBtn = By.id("SubmitCreate");
     By ErrorMessage = By.id("create_account_error");
     // Home Page Methods.
 
     public HomePage(TestSetup driver) {
     }
 
-    public void homePageIsDisplayed() {
+    public static void homePageIsDisplayed() {
         HelperMethods.isEleVisible(SignInBtn);
     }
 
-    public void clickSignIn() {
+    public static void clickSignIn() {
         HelperMethods.click(SignInBtn);
     }
 
@@ -45,7 +45,11 @@ public class HomePage {
         HelperMethods.click(CreateAccountBtn);
         HelperMethods.waitForElement(ErrorMessage, 20, 2);
     }
+    public static void setValidEmail(String validEmail) throws InterruptedException {
+        HelperMethods.enterText(CreateEmailTextBox, validEmail);
+        HelperMethods.click(CreateAccountBtn);
 
+    }
     public void verifyErrorMessage(String message) throws InterruptedException {
         String errorMessage = HelperMethods.getText(ErrorMessage);
         HelperMethods.isEleVisible(ErrorMessage);

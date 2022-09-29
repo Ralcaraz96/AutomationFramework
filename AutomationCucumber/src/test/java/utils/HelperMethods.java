@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
@@ -16,7 +18,7 @@ public class HelperMethods {
     public static WebDriver driver;
 
     public HelperMethods(WebDriver driver) {
-        this.driver = driver;
+        HelperMethods.driver = driver;
     }
 
     public static void isEleVisible(By by) {
@@ -54,6 +56,15 @@ public class HelperMethods {
             Assert.fail();
         }
         return driver.findElement(by).getText();
+    }
+    public static void selectDropdown(By by, String text) {//dropdown :D
+        try {
+            Select dropdown = new Select (driver.findElement(by.id(text)));
+            dropdown.selectByVisibleText(text);
+        } catch (NoSuchElementException e) {
+            driver.close();
+            Assert.fail();
+        }
     }
 
     public static void waitForElement(By by, Integer waitFor, Integer pollingTime) {

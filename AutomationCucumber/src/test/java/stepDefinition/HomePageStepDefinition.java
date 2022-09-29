@@ -19,13 +19,13 @@ public class HomePageStepDefinition {
 
     @Given("^User is on AutomationPractice page$")
     public void user_is_on_AutomationPractice_page() throws Exception {
-        homePage.homePageIsDisplayed();
+        HomePage.homePageIsDisplayed();
     }
 
     @When("^User click sing in\\.$")
     public void user_click_sing_in() throws Exception {
         // Write code here that turns the phrase above into concrete actions
-        homePage.clickSignIn();
+        HomePage.clickSignIn();
 
     }
 
