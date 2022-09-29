@@ -61,7 +61,16 @@ public class HelperMethods {
         return driver.findElement(by).getText();
     }
 
-    public static void selectDropdown(By by, String text) {//dropdown :D
+    public static void selectDropdownByValue(By by, String text) {//dropdown :D
+        try {
+            Select dropdown = new Select(driver.findElement(by));
+            dropdown.selectByValue(text);
+        } catch (NoSuchElementException e) {
+            driver.close();
+            Assert.fail();
+        }
+    }
+    public static void selectDropdownByText(By by, String text) {//dropdown :D
         try {
             Select dropdown = new Select(driver.findElement(by));
             dropdown.selectByVisibleText(text);
@@ -70,7 +79,6 @@ public class HelperMethods {
             Assert.fail();
         }
     }
-
 
     public static void waitForElement(By by) {
         try {

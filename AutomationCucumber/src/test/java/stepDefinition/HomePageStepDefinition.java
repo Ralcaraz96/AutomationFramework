@@ -44,10 +44,12 @@ public class HomePageStepDefinition {
     public void user_submits_invalid_email(String invalidEmail) throws InterruptedException {
         homePage.setInvalidEmail(invalidEmail);
     }
+
     @Then("^User submits valid (.+)$")
     public void user_submits_valid_Email(String validEmail) {
         homePage.setValidEmail(validEmail);
     }
+
     @Then("^User validates error (.+)$")
     public void user_validates_error_message(String message) throws InterruptedException {
         homePage.verifyErrorMessage(message);

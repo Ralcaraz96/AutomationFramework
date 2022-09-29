@@ -22,7 +22,7 @@ public class HomePage {
     public HomePage(TestSetup driver) {
     }
 
-    public  void homePageIsDisplayed() {
+    public void homePageIsDisplayed() {
         HelperMethods.isEleVisible(SignInBtn);
     }
 

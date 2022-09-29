@@ -1,11 +1,8 @@
 package PageObjects;
 
-import lombok.experimental.Helper;
 import org.openqa.selenium.By;
 import utils.HelperMethods;
 import utils.TestSetup;
-
-import java.time.Year;
 
 public class CreateAccountPage {
     TestSetup testSetup;
@@ -46,28 +43,31 @@ public class CreateAccountPage {
     // Create Account Page Methods.
     public CreateAccountPage(TestSetup driver) {
     }
+
     public void CreateAccountPageIsDisplayed() {
         HelperMethods.waitForElement(FirstNameTextBox);
     }
+
     public void PersonalInformation(String firstName, String lastName, String passwordPi, String days,
                                     String months, String years) {
-        //HelperMethods.waitForElement(FirstNameTextBox);
+        HelperMethods.waitForElement(FirstNameTextBox);
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBox, firstName);
         HelperMethods.enterText(LastNameTextBox, lastName);
         HelperMethods.click(EmailTextBoxPersonalInfo);
         HelperMethods.enterText(PasswordTextBoxPersonalInfo, passwordPi);
         HelperMethods.click(DayDropDownDateOfBirth);
-        HelperMethods.selectDropdown(DayDropDownDateOfBirth, days);
+        HelperMethods.selectDropdownByValue(DayDropDownDateOfBirth, days);
         HelperMethods.click(MonthDropDownDateOfBirth);
-        HelperMethods.selectDropdown(MonthDropDownDateOfBirth, months);
+        HelperMethods.selectDropdownByValue(MonthDropDownDateOfBirth, months);
         HelperMethods.click(YearDropDownDateOfBirth);
-        HelperMethods.selectDropdown(YearDropDownDateOfBirth, years);
+        HelperMethods.selectDropdownByValue(YearDropDownDateOfBirth, years);
         HelperMethods.click(NewsletterCheckBox);
         HelperMethods.click(SpecialOffersCheckBox);
     }
+
     public void Address(String firstName, String lastName, String company, String address1, String address2
-            , String city, String state, String zipcode, String country, String additionalinfo,
+            , String city, String state, String zipcode, String country, String additionalInfo,
                         String phone, String phoneMobile, String alias) {
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBoxAddress, firstName);
@@ -76,10 +76,10 @@ public class CreateAccountPage {
         HelperMethods.enterText(AddressTextBoxAddress, address1);
         HelperMethods.enterText(Address2TextBoxAddress, address2);
         HelperMethods.enterText(CityTextBoxAddress, city);
-        HelperMethods.selectDropdown(StateDropdownAddress, state);
+        HelperMethods.selectDropdownByText(StateDropdownAddress, state);
         HelperMethods.enterText(ZipCodeTextBoxAddress, zipcode);
-        HelperMethods.selectDropdown(CountryDropdownAddress, country);
-        HelperMethods.enterText(AdditionalInfoTextBoxAddress, additionalinfo);
+        HelperMethods.selectDropdownByText(CountryDropdownAddress, country);
+        HelperMethods.enterText(AdditionalInfoTextBoxAddress, additionalInfo);
         HelperMethods.enterText(HomePhoneTextBoxAddress, phone);
         HelperMethods.enterText(MobilePhoneTextBoxAddress, phoneMobile);
         HelperMethods.enterText(AliasTextBoxAddress, alias);

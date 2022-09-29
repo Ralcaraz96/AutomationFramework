@@ -7,12 +7,9 @@ public class PageObjectManager {
     public WebDriver driver;
     public HomePage homePage;
     public CreateAccountPage createAccountPage;
-
-
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
     }
-
     public HomePage getHomePage() {
         homePage = new HomePage((TestSetup) TestSetup.driver);
         return homePage;
@@ -21,5 +18,4 @@ public class PageObjectManager {
         createAccountPage = new CreateAccountPage((TestSetup) TestSetup.driver);
         return createAccountPage;
     }
-
 }
