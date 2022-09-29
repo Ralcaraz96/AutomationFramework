@@ -6,7 +6,8 @@ import utils.TestSetup;
 public class PageObjectManager {
     public WebDriver driver;
     public HomePage homePage;
-    public CreateAccountPage CreateAccountPage;
+    public CreateAccountPage createAccountPage;
+
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
@@ -17,8 +18,8 @@ public class PageObjectManager {
         return homePage;
     }
     public CreateAccountPage getCreateAccountPage() {
-        CreateAccountPage  = new CreateAccountPage((TestSetup) TestSetup.driver);
-        return CreateAccountPage;
+        createAccountPage = new CreateAccountPage((TestSetup) TestSetup.driver);
+        return createAccountPage;
     }
 
 }

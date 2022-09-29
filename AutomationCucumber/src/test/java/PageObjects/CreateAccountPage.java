@@ -10,14 +10,14 @@ public class CreateAccountPage {
 
     //CreateAccountPage
 
-    By CreateAccountPageScreen = By.xpath("//div[@id='page']");
+    By CreateAccountPageScreen = By.id("authentication");
 
     //Personal Information
     By TitleMrBtn = By.xpath("(//input[@id='id_gender1'])[1]");
     By FirstNameTextBox = By.id("customer_firstname");
     By LastNameTextBox = By.id("customer_lastname");
-    By EmailTextBoxPI = By.id("email");
-    By PasswordTextBoxPI = By.id("passwd");
+    By EmailTextBoxPersonalInfo = By.id("email");
+    By PasswordTextBoxPersonalInfo = By.id("passwd");
     By DateOfBirthDayDropDown = By.id("days");
     By DateOfBirthMonthDropDown = By.id("months");
     By DateOfBirthYearDropDown = By.id("years");
@@ -39,38 +39,29 @@ public class CreateAccountPage {
 
     By MobilePhoneTextBoxAddress = By.id("phone_mobile");
     By AliasTextBoxAddress = By.id("alias");
-    public static By RegisterBtnAddress = By.id("submitAccount");
+    By RegisterBtnAddress = By.id("submitAccount");
 
     // Create Account Page Methods.
-
     public CreateAccountPage(TestSetup driver) {
     }
-
     public void CreateAccountPageIsDisplayed() {HelperMethods.isEleVisible(CreateAccountPageScreen);
     }
-
-
     public void PersonalInformation(String firstName, String lastName, String passwordPi, String days,
                                     String months, String years) {
-
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBox, firstName);
         HelperMethods.enterText(LastNameTextBox, lastName);
-        HelperMethods.click(EmailTextBoxPI);
-        HelperMethods.enterText(PasswordTextBoxPI, passwordPi);
+        HelperMethods.click(EmailTextBoxPersonalInfo);
+        HelperMethods.enterText(PasswordTextBoxPersonalInfo, passwordPi);
         HelperMethods.selectDropdown(DateOfBirthDayDropDown, days);
         HelperMethods.selectDropdown(DateOfBirthMonthDropDown, months);
         HelperMethods.selectDropdown(DateOfBirthYearDropDown, years);
         HelperMethods.click(NewsletterCheckBox);
         HelperMethods.click(SpecialOffersCheckBox);
-
-
     }
-
     public void Address(String firstName, String lastName, String company, String address1, String address2
             , String city, String state, String zipcode, String country, String additionalinfo,
-                        String phone,String phoneMobile, String alias) {
-
+                        String phone, String phoneMobile, String alias) {
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBoxAddress, firstName);
         HelperMethods.enterText(LastNameTextBoxAddress, lastName);
@@ -85,10 +76,7 @@ public class CreateAccountPage {
         HelperMethods.enterText(HomePhoneTextBoxAddress, phone);
         HelperMethods.enterText(MobilePhoneTextBoxAddress, phoneMobile);
         HelperMethods.enterText(AliasTextBoxAddress, alias);
-
-
     }
-
     public void userSubmitPersonalInformationAndCreateAnAccount() {
         HelperMethods.click(RegisterBtnAddress);
     }

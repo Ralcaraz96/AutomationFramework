@@ -19,13 +19,13 @@ public class HomePageStepDefinition {
 
     @Given("^User is on AutomationPractice page$")
     public void user_is_on_AutomationPractice_page() throws Exception {
-        HomePage.homePageIsDisplayed();
+        homePage.homePageIsDisplayed();
     }
 
     @When("^User click sing in\\.$")
     public void user_click_sing_in() throws Exception {
         // Write code here that turns the phrase above into concrete actions
-        HomePage.clickSignIn();
+        homePage.clickSignIn();
 
     }
 
@@ -44,7 +44,10 @@ public class HomePageStepDefinition {
     public void user_submits_invalid_email(String invalidEmail) throws InterruptedException {
         homePage.setInvalidEmail(invalidEmail);
     }
-
+    @Then("^User submits valid (.+)$")
+    public void user_submits_valid_Email(String validEmail) throws InterruptedException {
+        homePage.setValidEmail(validEmail);
+    }
     @Then("^User validates error (.+)$")
     public void user_validates_error_message(String message) throws InterruptedException {
         homePage.verifyErrorMessage(message);
