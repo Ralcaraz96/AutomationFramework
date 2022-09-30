@@ -24,6 +24,7 @@ public class CreateAccountPage {
     By SpecialOffersCheckBox = By.id("optin");
 
     //Your Address
+
     By FirstNameTextBoxAddress = By.id("firstname");
     By LastNameTextBoxAddress = By.id("lastname");
     By CompanyTextBoxAddress = By.id("company");
@@ -84,6 +85,7 @@ public class CreateAccountPage {
         HelperMethods.enterText(MobilePhoneTextBoxAddress, phoneMobile);
         HelperMethods.enterText(AliasTextBoxAddress, alias);
     }
+
     public void userClickSubmitPersonalInformationAndCreateAnAccount() {
         HelperMethods.click(RegisterAddressBtn);
     }
