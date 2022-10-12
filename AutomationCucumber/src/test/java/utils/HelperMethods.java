@@ -70,6 +70,7 @@ public class HelperMethods {
             Assert.fail();
         }
     }
+
     public static void selectDropdownByText(By by, String text) {//dropdown :D
         try {
             Select dropdown = new Select(driver.findElement(by));

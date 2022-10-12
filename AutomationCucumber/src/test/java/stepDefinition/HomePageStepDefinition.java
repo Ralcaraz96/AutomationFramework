@@ -4,7 +4,6 @@ import PageObjects.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import utils.TestSetup;
 
 public class HomePageStepDefinition {
