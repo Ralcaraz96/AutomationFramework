@@ -1,10 +1,14 @@
 package stepDefinition;
 
+import Excel.ExcelReader;
 import PageObjects.CreateAccountPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import utils.TestSetup;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class CreateAccountPageStepDefinition {
@@ -16,6 +20,11 @@ public class CreateAccountPageStepDefinition {
         this.testSetup = testSetup;
         this.createAccountPage = testSetup.pageObjectManager.getCreateAccountPage();
     }
+    @Given ("^User fills the form from given.... $")
+    ExcelReader reader = new ExcelReader();
+    List<Map<String,String>> testData =
+            reader.getData("C:/Users/rober/Downloads/DataCucu.xlsx", sheetName);
+    String Email = testData.get(rowNumber).get("");
 
     @Then("^User is in create an account page.$")
     public void user_is_in_create_an_account_page() {
