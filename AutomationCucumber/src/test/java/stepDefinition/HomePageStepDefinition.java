@@ -21,7 +21,7 @@ public class HomePageStepDefinition {
         homePage.homePageIsDisplayed();
     }
 
-    @When("^User click sing in\\.$")
+    @When("^User click sign in\\.$")
     public void user_click_sing_in() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         homePage.clickSignIn();

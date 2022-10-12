@@ -3,7 +3,7 @@ Feature: Create Account
 
   Scenario Outline: Account Invalid
     Given User is on AutomationPractice page
-    When User click sing in.
+    When User click sign in.
     Then User submits invalid <email>
     Then User validates error <message>
 
