@@ -49,8 +49,8 @@ public class CreateAccountPage {
         HelperMethods.waitForElement(FirstNameTextBox);
     }
 
-    public void PersonalInformation(String firstName, String lastName, String passwordPi, String days,
-                                    String months, String years) {
+    public void FillPersonalInformation(String firstName, String lastName, String passwordPi, String days,
+                                        String months, String years) {
         HelperMethods.waitForElement(FirstNameTextBox);
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBox, firstName);
@@ -67,9 +67,9 @@ public class CreateAccountPage {
         HelperMethods.click(SpecialOffersCheckBox);
     }
 
-    public void Address(String firstName, String lastName, String company, String address1, String address2
+    public void FillAddress(String firstName, String lastName, String company, String address1, String address2
             , String city, String state, String zipcode, String country, String additionalInfo,
-                        String phone, String phoneMobile, String alias) {
+                            String phone, String phoneMobile, String alias) {
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBoxAddress, firstName);
         HelperMethods.enterText(LastNameTextBoxAddress, lastName);

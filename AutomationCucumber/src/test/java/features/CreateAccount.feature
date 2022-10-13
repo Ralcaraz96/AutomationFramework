@@ -13,7 +13,7 @@ Feature: Create Account
 
   Scenario Outline: Create Account Valid
     Given User is on AutomationPractice page
-    When User click sing in.
+    When User click sign in.
     Then User submits valid <Email>
 
     Examples:
@@ -24,12 +24,11 @@ Feature: Create Account
 
   Scenario Outline: Create An Account
     Given User is on AutomationPractice page
-    When User click sing in.
-    Then User submits valid <Email>
+    When User click sign in.
+    Then user fills the email from given sheetname "<SheetName>" and rownumber <RowNumber>
     Then User is in create an account page.
-    And User provides personal information <FirstName>, <LastName>, <PasswordPI> and date of birth <days>, <months>, <years>
-    And User provides address information <FirstName>, <LastName>, <Company>, <Address>, <Address2>, <City>, <State>, <ZipCode>, <Country>, <AdditionalInfo>, <Phone>, <MobilePhone>, <Alias>
+    And User provides personal information and address information from given sheetname "<SheetName>" and rownumber <RowNumber>
     Then User submit personal information and create an account
     Examples:
-      | Email                    |  | FirstName | LastName |  | PasswordPI |  | days |  | months |  | years |  | Company  |  | Address            |  | Address2                         |  | City          |  | State    |  | ZipCode |  | Country       |  | AdditionalInfo |  | Phone      |  | MobilePhone |  | Alias      |
-      | pitobertrand@hotmail.com |  | firstname | lastName |  | passwordPi |  | 5    |  | 7      |  | 1996  |  | Hexaware |  | Potomac Foundation |  | 618 WestwoodCenter Dr Suite #300 |  | Tysons Corner |  | Virginia |  | 22182   |  | United States |  | Hello          |  | 6699838822 |  | 6691999751  |  | Hexawarian |
+      | SheetName | RowNumber |
+      | Hoja1     | 0         |
