@@ -69,4 +69,14 @@ public class HomePageStepDefinition {
         homePage.setValidEmail(email);
 
     }
+    @Then("User logins using data from {string} and {int}")
+    public void userLoginsUsingDataFromAndRowNumber(String sheetname,Integer rowNumber) throws IOException, InvalidFormatException {
+        ExcelReader reader = new ExcelReader();
+        List<Map<String, String>> testData = reader.getData("src/test/resources/DataCucu.xlsx", sheetname);
+        // retrieve data from sheet.
+        String username = testData.get(rowNumber).get("Email");
+        String password = testData.get(rowNumber).get("PasswordPI");
+        // Send data to method.
+        homePage.logIn(username, password);
+    }
 }
