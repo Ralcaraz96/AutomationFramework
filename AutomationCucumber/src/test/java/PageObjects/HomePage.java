@@ -40,15 +40,20 @@ public class HomePage {
         HelperMethods.isEleVisible(NavigationPage);
     }
 
-    public void setInvalidEmail(String invalidEmail) throws InterruptedException {
+    public void setInvalidEmail(String invalidEmail) {
         HelperMethods.enterText(CreateEmailTextBox, invalidEmail);
         HelperMethods.click(CreateAccountBtn);
-        HelperMethods.waitForElement(ErrorMessage, 20, 2);
+        HelperMethods.waitForElement(ErrorMessage);
     }
 
-    public void verifyErrorMessage(String message) throws InterruptedException {
-        String errorMessage = HelperMethods.getText(ErrorMessage);
+    public void setValidEmail(String validEmail) {
+        HelperMethods.enterText(CreateEmailTextBox, validEmail);
+        HelperMethods.click(CreateAccountBtn);
+
+    }
+
+    public void verifyErrorMessage(String message) {
         HelperMethods.isEleVisible(ErrorMessage);
-        Assert.assertEquals(errorMessage, message);
+        Assert.assertEquals(HelperMethods.getText(ErrorMessage), message);
     }
 }
