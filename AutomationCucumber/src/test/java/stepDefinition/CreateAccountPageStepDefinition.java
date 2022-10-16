@@ -52,13 +52,13 @@ public class CreateAccountPageStepDefinition {
         String state = testData.get(rowNumber).get("State");
         String zipcode = testData.get(rowNumber).get("ZipCode");
         String country = testData.get(rowNumber).get("Country");
-        String additionalinfo = testData.get(rowNumber).get("AdditionalInfo");
+        String additionalInfo = testData.get(rowNumber).get("AdditionalInfo");
         String phone = testData.get(rowNumber).get("Phone");
         String phoneMobile = testData.get(rowNumber).get("MobilePhone");
         String alias = testData.get(rowNumber).get("Alias");
         // Send data to method.
         createAccountPage.FillPersonalInformation(firstName, lastName, passwordPi, days, months, years);
         createAccountPage.FillAddress(firstName, lastName, company, address1, address2, city, state, zipcode,
-                country, additionalinfo, phone, phoneMobile, alias);
+                country, additionalInfo, phone, phoneMobile, alias);
     }
 }
