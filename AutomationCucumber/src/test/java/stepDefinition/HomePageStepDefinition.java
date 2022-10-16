@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import utils.GlobalProperties;
 import utils.TestSetup;
 
 import java.io.IOException;
@@ -62,17 +63,17 @@ public class HomePageStepDefinition {
     @Then("user fills the email from given sheetname {string} and rownumber {int}")
     public void userFillsTheEmailFromGivenSheetnameAndrownumber(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
         ExcelReader reader = new ExcelReader();
-        List<Map<String, String>> testData = reader.getData("src/test/resources/DataCucu.xlsx", sheetname);
+        List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);
         // retrieve data from sheet.
         String email = testData.get(rowNumber).get("Email");
         // Send data to method.
         homePage.setValidEmail(email);
-
     }
+
     @Then("User logins using data from {string} and {int}")
-    public void userLoginsUsingDataFromAndRowNumber(String sheetname,Integer rowNumber) throws IOException, InvalidFormatException {
+    public void userLoginsUsingDataFromAndRowNumber(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
         ExcelReader reader = new ExcelReader();
-        List<Map<String, String>> testData = reader.getData("src/test/resources/DataCucu.xlsx", sheetname);
+        List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);
         // retrieve data from sheet.
         String username = testData.get(rowNumber).get("Email");
         String password = testData.get(rowNumber).get("PasswordPI");

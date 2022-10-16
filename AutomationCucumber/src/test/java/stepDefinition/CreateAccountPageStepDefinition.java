@@ -5,6 +5,7 @@ import PageObjects.CreateAccountPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import utils.GlobalProperties;
 import utils.TestSetup;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class CreateAccountPageStepDefinition {
     @And("User provides personal information and address information from given sheetname {string} and rownumber {int}")
     public void userProvidesPersonalInformationAndAddressInformationFromGivenSheetnameAndRownumberRowNumber(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
         ExcelReader reader = new ExcelReader();
-        List<Map<String, String>> testData = reader.getData("src/test/resources/DataCucu.xlsx", sheetname);
+        List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);
         // retrieve data from sheet.
         String firstName = testData.get(rowNumber).get("FirstName");
         String lastName = testData.get(rowNumber).get("LastName");

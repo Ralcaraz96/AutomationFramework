@@ -32,13 +32,11 @@ public class ExcelReader {
     }
 
     private Sheet getSheetByName(String excelFilePath, String sheetName) throws IOException, InvalidFormatException {
-        Sheet sheet = getWorkBook(excelFilePath).getSheet(sheetName);
-        return sheet;
+        return getWorkBook(excelFilePath).getSheet(sheetName);
     }
 
     private Sheet getSheetByIndex(String excelFilePath, int sheetNumber) throws IOException, InvalidFormatException {
-        Sheet sheet = getWorkBook(excelFilePath).getSheetAt(sheetNumber);
-        return sheet;
+        return getWorkBook(excelFilePath).getSheetAt(sheetNumber);
     }
 
     private Workbook getWorkBook(String excelFilePath) throws IOException, InvalidFormatException {
@@ -152,6 +150,4 @@ public class ExcelReader {
         }
         return columnMapdata;
     }
-
-
 }
