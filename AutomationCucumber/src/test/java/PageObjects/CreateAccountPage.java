@@ -7,10 +7,6 @@ import utils.TestSetup;
 public class CreateAccountPage {
     TestSetup testSetup;
 
-    //CreateAccountPage
-
-    By CreateAccountPageScreen = By.id("authentication");
-
     //Personal Information
     By TitleMrBtn = By.id("id_gender1");
     By FirstNameTextBox = By.id("customer_firstname");
@@ -39,6 +35,7 @@ public class CreateAccountPage {
 
     By MobilePhoneTextBoxAddress = By.id("phone_mobile");
     By AliasTextBoxAddress = By.id("alias");
+
     By RegisterBtn = By.id("submitAccount");
 
     //My Account Page
@@ -46,6 +43,10 @@ public class CreateAccountPage {
     By MyAccountPage = By.id("center_column");
 
     By MandatoryFieldsAlert = By.xpath("//div[@class='alert alert-danger']");
+
+    By RegisterAccountBtn = By.id("submitAccount");
+
+
 
     // Create Account Page Methods.
     public CreateAccountPage(TestSetup driver) {
@@ -93,6 +94,7 @@ public class CreateAccountPage {
     }
 
     public void userClickSubmitPersonalInformationAndCreateAnAccount() {
+
         HelperMethods.click(RegisterBtn);
     }
 
@@ -101,5 +103,7 @@ public class CreateAccountPage {
     }
     public void MandatoryFieldsAlert() {
         HelperMethods.isEleVisible(MandatoryFieldsAlert);
+        HelperMethods.click(RegisterAccountBtn);
     }
+
 }

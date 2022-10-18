@@ -66,10 +66,6 @@ public class CreateAccountPageStepDefinition {
     public void userValidatesThatUserIsCreated() {
         createAccountPage.UserIsInMyAccountPage();
     }
-    public void MandatoryFieldsAlert() {
-    createAccountPage.MandatoryFieldsAlert();
-    }
-
     @Then("User leave mandatory fields blank and click Register button")
     public void userLeaveMandatoryFieldsBlankAndClickRegisterButton() {
         createAccountPage.userClickSubmitPersonalInformationAndCreateAnAccount();
@@ -79,4 +75,13 @@ public class CreateAccountPageStepDefinition {
     public void userVerifyThatErrorHasBeenDisplayedForTheMandatoryFields() {
         createAccountPage.MandatoryFieldsAlert();
     }
+
+    @Then("User leave the mandatory fields blank and click on Register button")
+    public void userLeaveTheMandatoryFieldsBlankAndClickOnRegisterButton() {
+        createAccountPage.userClickSubmitPersonalInformationAndCreateAnAccount();
+
+
+    }
+
+
 }
