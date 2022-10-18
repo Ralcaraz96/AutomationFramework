@@ -1,7 +1,7 @@
 Feature: Create Account
 
 
-  Scenario Outline: Account Invalid
+  Scenario Outline: 2. Verify invalid email address error
     Given User is on AutomationPractice page
     When User click sign in.
     Then User submits invalid <email>
@@ -22,13 +22,26 @@ Feature: Create Account
 
   @CreateAccount
 
-  Scenario Outline: Create An Account
+  Scenario Outline: 1. Automate User Registration process of e-commerce website
     Given User is on AutomationPractice page
     When User click sign in.
-    Then user fills the email from given sheetname "<SheetName>" and rownumber <RowNumber>
+    Then User fills the email from given sheetname "<SheetName>" and rownumber <RowNumber>
     Then User is in create an account page.
     And User provides personal information and address information from given sheetname "<SheetName>" and rownumber <RowNumber>
     Then User submit personal information and create an account
+    Then User validates that user is created
     Examples:
       | SheetName | RowNumber |
       | Hoja1     | 0         |
+
+
+    Scenario Outline: Verify error messages for mandatory fields
+      Given User is on AutomationPractice page
+      When User click sign in.
+      Then User fills the email from given sheetname "<SheetName>" and rownumber <RowNumber>
+      Then User leave mandatory fields blank and click Register button
+      Then User verify that error has been displayed for the mandatory fields
+
+      Examples:
+        | SheetName | RowNumber |
+        | Hoja1     | 3         |

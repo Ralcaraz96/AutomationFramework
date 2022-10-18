@@ -61,4 +61,22 @@ public class CreateAccountPageStepDefinition {
         createAccountPage.FillAddress(firstName, lastName, company, address1, address2, city, state, zipcode,
                 country, additionalInfo, phone, phoneMobile, alias);
     }
+
+    @Then("User validates that user is created")
+    public void userValidatesThatUserIsCreated() {
+        createAccountPage.UserIsInMyAccountPage();
+    }
+    public void MandatoryFieldsAlert() {
+    createAccountPage.MandatoryFieldsAlert();
+    }
+
+    @Then("User leave mandatory fields blank and click Register button")
+    public void userLeaveMandatoryFieldsBlankAndClickRegisterButton() {
+        createAccountPage.userClickSubmitPersonalInformationAndCreateAnAccount();
+    }
+
+    @Then("User verify that error has been displayed for the mandatory fields")
+    public void userVerifyThatErrorHasBeenDisplayedForTheMandatoryFields() {
+        createAccountPage.MandatoryFieldsAlert();
+    }
 }

@@ -39,7 +39,13 @@ public class CreateAccountPage {
 
     By MobilePhoneTextBoxAddress = By.id("phone_mobile");
     By AliasTextBoxAddress = By.id("alias");
-    By RegisterAddressBtn = By.id("submitAccount");
+    By RegisterBtn = By.id("submitAccount");
+
+    //My Account Page
+
+    By MyAccountPage = By.id("center_column");
+
+    By MandatoryFieldsAlert = By.xpath("//div[@class='alert alert-danger']");
 
     // Create Account Page Methods.
     public CreateAccountPage(TestSetup driver) {
@@ -87,6 +93,13 @@ public class CreateAccountPage {
     }
 
     public void userClickSubmitPersonalInformationAndCreateAnAccount() {
-        HelperMethods.click(RegisterAddressBtn);
+        HelperMethods.click(RegisterBtn);
+    }
+
+    public void UserIsInMyAccountPage() {
+        HelperMethods.isEleVisible(MyAccountPage);
+    }
+    public void MandatoryFieldsAlert() {
+        HelperMethods.isEleVisible(MandatoryFieldsAlert);
     }
 }
