@@ -1,6 +1,7 @@
 package PageObjects;
 
 import Data.Constants;
+import Data.InvalidErrors;
 import Excel.ExcelReader;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
@@ -46,15 +47,10 @@ public class CreateAccountPage {
     By AliasTextBoxAddress = By.id("alias");
 
     By RegisterBtn = By.id("submitAccount");
-
-    //My Account Page
-
-    By MyAccountPage = By.id("center_column");
-
     By MandatoryFieldsAlert = By.xpath("//div[@class='alert alert-danger']");
 
-    By RegisterAccountBtn = By.id("submitAccount");
-
+    //My Account Page
+    By MyAccountPage = By.id("center_column");
 
 
     // Create Account Page Methods.
@@ -134,9 +130,39 @@ public class CreateAccountPage {
     public void UserIsInMyAccountPage() {
         HelperMethods.isEleVisible(MyAccountPage);
     }
+
     public void VerifyMandatoryFieldsAlertRequired() {
         HelperMethods.waitForElement(MandatoryFieldsAlert);
         String ErrorMessage = HelperMethods.getText(MandatoryFieldsAlert);
         Assert.assertTrue(ErrorMessage.contains(Constants.FirstNameRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.LastNameRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.PhoneNumberRegisterRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.PasswordRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.Address1Required));
+        Assert.assertTrue(ErrorMessage.contains(Constants.CityRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.ZipCodeRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.StateRequired));
+    }
+    public void FillInvalidFields(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
+        ExcelReader reader = new ExcelReader();
+        List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);
+        String firstName = testData.get(rowNumber).get("FirstName");
+        String lastName = testData.get(rowNumber).get("LastName");
+        String zipcode = testData.get(rowNumber).get("ZipCode");
+        String phoneMobile = testData.get(rowNumber).get("MobilePhone");
+        ///////////////////
+        HelperMethods.enterText(FirstNameTextBoxAddress, firstName);
+        HelperMethods.enterText(LastNameTextBoxAddress, lastName);
+        HelperMethods.enterText(ZipCodeTextBoxAddress, zipcode);
+        HelperMethods.enterText(MobilePhoneTextBoxAddress, phoneMobile);
+    }
+    public void VerifyMandatoryFieldsAlertInvalid() {
+        HelperMethods.waitForElement(MandatoryFieldsAlert);
+        String ErrorMessageInvalid = HelperMethods.getText(MandatoryFieldsAlert);
+        Assert.assertTrue(ErrorMessageInvalid.contains(InvalidErrors.FirstNameInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(InvalidErrors.LastNameInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(InvalidErrors.ZipCodeInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(InvalidErrors.PhoneNumberInvalid));
     }
 }
+

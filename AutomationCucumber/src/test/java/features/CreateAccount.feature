@@ -35,13 +35,25 @@ Feature: Create Account
       | Hoja1     | 0         |
 
 
-    Scenario Outline: Verify error messages for mandatory fields
-      Given User is on AutomationPractice page
-      When User click sign in.
-      Then User fills the email from given sheetname "<SheetName>" and rownumber <RowNumber>
-      Then User leave mandatory fields blank and click Register button
-      Then User verify that error has been displayed for the mandatory fields
+  Scenario Outline: Verify error messages for mandatory fields
+    Given User is on AutomationPractice page
+    When User click sign in.
+    Then User fills the email from given sheetname "<SheetName>" and rownumber <RowNumber>
+    Then User leave mandatory fields blank and click Register button
+    Then User verify that error has been displayed for the mandatory fields
 
-      Examples:
-        | SheetName | RowNumber |
-        | Hoja1     | 2         |
+    Examples:
+      | SheetName | RowNumber |
+      | Hoja1     | 2         |
+
+  Scenario Outline: Verify error messages for entering incorrect values in fields
+    Given User is on AutomationPractice page
+    When User click sign in.
+    Then User fills the email from given sheetname "<SheetName>" and rownumber <RowNumber>
+    Then User is in create an account page.
+    Then User enter incorrect values in fields from given sheetname "<SheetName>" and rownumber <RowNumber>
+    Then User verify that error messages for respective fields are displaying
+
+    Examples:
+      | SheetName     | RowNumber |
+      | InvalidFields | 0         |

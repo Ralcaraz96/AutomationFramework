@@ -54,4 +54,15 @@ public class CreateAccountPageStepDefinition {
     public void userVerifyThatErrorHasBeenDisplayedForTheMandatoryFields() {
         createAccountPage.VerifyMandatoryFieldsAlertRequired();
     }
+    @Then("User enter incorrect values in fields from given sheetname {string} and rownumber {int}")
+    public void userEnterIncorrectValuesInFields(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
+        createAccountPage.FillInvalidFields(sheetname, rowNumber);
+        createAccountPage.ClickRegisterBtn();
+
     }
+
+    @Then("User verify that error messages for respective fields are displaying")
+    public void userVerifyThatErrorMessagesForRespectiveFieldsAreDisplaying() {
+        createAccountPage.VerifyMandatoryFieldsAlertInvalid();
+    }
+}
