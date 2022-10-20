@@ -60,7 +60,7 @@ public class HomePageStepDefinition {
         homePage.verifyErrorMessage(message);
     }
 
-    @Then("user fills the email from given sheetname {string} and rownumber {int}")
+    @Then("User fills the email from given sheetname {string} and rownumber {int}")
     public void userFillsTheEmailFromGivenSheetnameAndrownumber(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
         ExcelReader reader = new ExcelReader();
         List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);

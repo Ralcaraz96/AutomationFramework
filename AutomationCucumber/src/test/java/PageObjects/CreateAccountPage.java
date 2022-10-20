@@ -1,15 +1,20 @@
 package PageObjects;
 
+import Data.Constants;
+import Excel.ExcelReader;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import utils.GlobalProperties;
 import utils.HelperMethods;
 import utils.TestSetup;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 public class CreateAccountPage {
     TestSetup testSetup;
-
-    //CreateAccountPage
-
-    By CreateAccountPageScreen = By.id("authentication");
 
     //Personal Information
     By TitleMrBtn = By.id("id_gender1");
@@ -39,7 +44,13 @@ public class CreateAccountPage {
 
     By MobilePhoneTextBoxAddress = By.id("phone_mobile");
     By AliasTextBoxAddress = By.id("alias");
-    By RegisterAddressBtn = By.id("submitAccount");
+
+    By RegisterBtn = By.id("submitAccount");
+    By MandatoryFieldsAlert = By.xpath("//div[@class='alert alert-danger']");
+
+    //My Account Page
+    By MyAccountPage = By.id("center_column");
+
 
     // Create Account Page Methods.
     public CreateAccountPage(TestSetup driver) {
@@ -49,8 +60,17 @@ public class CreateAccountPage {
         HelperMethods.waitForElement(FirstNameTextBox);
     }
 
-    public void FillPersonalInformation(String firstName, String lastName, String passwordPi, String days,
-                                        String months, String years) {
+    public void FillPersonalInformation(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
+        ExcelReader reader = new ExcelReader();
+        List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);
+        // retrieve data from sheet.
+        String firstName = testData.get(rowNumber).get("FirstName");
+        String lastName = testData.get(rowNumber).get("LastName");
+        String passwordPi = testData.get(rowNumber).get("PasswordPI");
+        String days = testData.get(rowNumber).get("days");
+        String months = testData.get(rowNumber).get("months");
+        String years = testData.get(rowNumber).get("years");
+        //////////////////////////////////////////
         HelperMethods.waitForElement(FirstNameTextBox);
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBox, firstName);
@@ -67,9 +87,24 @@ public class CreateAccountPage {
         HelperMethods.click(SpecialOffersCheckBox);
     }
 
-    public void FillAddress(String firstName, String lastName, String company, String address1, String address2
-            , String city, String state, String zipcode, String country, String additionalInfo,
-                            String phone, String phoneMobile, String alias) {
+    public void FillAddress(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
+        ExcelReader reader = new ExcelReader();
+        List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);
+        // retrieve data from sheet.
+        String firstName = testData.get(rowNumber).get("FirstName");
+        String lastName = testData.get(rowNumber).get("LastName");
+        String company = testData.get(rowNumber).get("Company");
+        String address1 = testData.get(rowNumber).get("Address");
+        String address2 = testData.get(rowNumber).get("Address2");
+        String city = testData.get(rowNumber).get("City");
+        String state = testData.get(rowNumber).get("State");
+        String zipcode = testData.get(rowNumber).get("ZipCode");
+        String country = testData.get(rowNumber).get("Country");
+        String additionalInfo = testData.get(rowNumber).get("AdditionalInfo");
+        String phone = testData.get(rowNumber).get("Phone");
+        String phoneMobile = testData.get(rowNumber).get("MobilePhone");
+        String alias = testData.get(rowNumber).get("Alias");
+        ///////////////////////////////////
         HelperMethods.click(TitleMrBtn);
         HelperMethods.enterText(FirstNameTextBoxAddress, firstName);
         HelperMethods.enterText(LastNameTextBoxAddress, lastName);
@@ -86,7 +121,47 @@ public class CreateAccountPage {
         HelperMethods.enterText(AliasTextBoxAddress, alias);
     }
 
-    public void userClickSubmitPersonalInformationAndCreateAnAccount() {
-        HelperMethods.click(RegisterAddressBtn);
+    public void ClickRegisterBtn() {
+        HelperMethods.waitForElement(RegisterBtn);
+        HelperMethods.click(RegisterBtn);
+    }
+
+    public void UserIsInMyAccountPage() {
+        HelperMethods.isEleVisible(MyAccountPage);
+    }
+
+    public void VerifyMandatoryFieldsAlertRequired() {
+        HelperMethods.waitForElement(MandatoryFieldsAlert);
+        String ErrorMessage = HelperMethods.getText(MandatoryFieldsAlert);
+        Assert.assertTrue(ErrorMessage.contains(Constants.FirstNameRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.LastNameRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.PhoneNumberRegisterRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.PasswordRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.Address1Required));
+        Assert.assertTrue(ErrorMessage.contains(Constants.CityRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.ZipCodeRequired));
+        Assert.assertTrue(ErrorMessage.contains(Constants.StateRequired));
+    }
+    public void FillInvalidFields(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
+        ExcelReader reader = new ExcelReader();
+        List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);
+        String firstName = testData.get(rowNumber).get("FirstName");
+        String lastName = testData.get(rowNumber).get("LastName");
+        String zipcode = testData.get(rowNumber).get("ZipCode");
+        String phoneMobile = testData.get(rowNumber).get("MobilePhone");
+        ///////////////////
+        HelperMethods.enterText(FirstNameTextBoxAddress, firstName);
+        HelperMethods.enterText(LastNameTextBoxAddress, lastName);
+        HelperMethods.enterText(ZipCodeTextBoxAddress, zipcode);
+        HelperMethods.enterText(MobilePhoneTextBoxAddress, phoneMobile);
+    }
+    public void VerifyMandatoryFieldsAlertInvalid() {
+        HelperMethods.waitForElement(MandatoryFieldsAlert);
+        String ErrorMessageInvalid = HelperMethods.getText(MandatoryFieldsAlert);
+        Assert.assertTrue(ErrorMessageInvalid.contains(Constants.FirstNameInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(Constants.LastNameInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(Constants.ZipCodeInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(Constants.PhoneNumberInvalid));
     }
 }
+

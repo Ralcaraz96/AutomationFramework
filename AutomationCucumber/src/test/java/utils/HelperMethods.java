@@ -4,6 +4,7 @@ package utils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -93,4 +94,9 @@ public class HelperMethods {
             Assert.fail();
         }
     }
-}
+        public static void hoverElement(By by){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(driver.findElement(by)).perform();
+        }
+    }
+

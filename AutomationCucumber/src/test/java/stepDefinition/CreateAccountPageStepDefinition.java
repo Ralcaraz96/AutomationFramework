@@ -31,34 +31,39 @@ public class CreateAccountPageStepDefinition {
 
     @Then("^User submit personal information and create an account$")
     public void userClickSubmitPersonalInformationAndCreateAnAccount() {
-        createAccountPage.userClickSubmitPersonalInformationAndCreateAnAccount();
+        createAccountPage.ClickRegisterBtn();
     }
 
     @And("User provides personal information and address information from given sheetname {string} and rownumber {int}")
     public void userProvidesPersonalInformationAndAddressInformationFromGivenSheetnameAndRownumberRowNumber(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
-        ExcelReader reader = new ExcelReader();
-        List<Map<String, String>> testData = reader.getData(GlobalProperties.getProperties("DataSheet"), sheetname);
-        // retrieve data from sheet.
-        String firstName = testData.get(rowNumber).get("FirstName");
-        String lastName = testData.get(rowNumber).get("LastName");
-        String passwordPi = testData.get(rowNumber).get("PasswordPI");
-        String days = testData.get(rowNumber).get("days");
-        String months = testData.get(rowNumber).get("months");
-        String years = testData.get(rowNumber).get("years");
-        String company = testData.get(rowNumber).get("Company");
-        String address1 = testData.get(rowNumber).get("Address");
-        String address2 = testData.get(rowNumber).get("Address2");
-        String city = testData.get(rowNumber).get("City");
-        String state = testData.get(rowNumber).get("State");
-        String zipcode = testData.get(rowNumber).get("ZipCode");
-        String country = testData.get(rowNumber).get("Country");
-        String additionalInfo = testData.get(rowNumber).get("AdditionalInfo");
-        String phone = testData.get(rowNumber).get("Phone");
-        String phoneMobile = testData.get(rowNumber).get("MobilePhone");
-        String alias = testData.get(rowNumber).get("Alias");
         // Send data to method.
-        createAccountPage.FillPersonalInformation(firstName, lastName, passwordPi, days, months, years);
-        createAccountPage.FillAddress(firstName, lastName, company, address1, address2, city, state, zipcode,
-                country, additionalInfo, phone, phoneMobile, alias);
+        createAccountPage.FillPersonalInformation(sheetname, rowNumber);
+        createAccountPage.FillAddress(sheetname, rowNumber);
     }
+
+    @Then("User validates that user is created")
+    public void userValidatesThatUserIsCreated() {
+        createAccountPage.UserIsInMyAccountPage();
+    }
+    @Then("User leave mandatory fields blank and click Register button")
+    public void userLeaveMandatoryFieldsBlankAndClickRegisterButton() {
+        createAccountPage.ClickRegisterBtn();
+    }
+
+    @Then("User verify that error has been displayed for the mandatory fields")
+    public void userVerifyThatErrorHasBeenDisplayedForTheMandatoryFields() {
+        createAccountPage.VerifyMandatoryFieldsAlertRequired();
+    }
+    @Then("User enter incorrect values in fields from given sheetname {string} and rownumber {int}")
+    public void userEnterIncorrectValuesInFields(String sheetname, Integer rowNumber) throws IOException, InvalidFormatException {
+        createAccountPage.FillInvalidFields(sheetname, rowNumber);
+        createAccountPage.ClickRegisterBtn();
+
+    }
+
+    @Then("User verify that error messages for respective fields are displaying")
+    public void userVerifyThatErrorMessagesForRespectiveFieldsAreDisplaying() {
+        createAccountPage.VerifyMandatoryFieldsAlertInvalid();
+    }
+
 }
