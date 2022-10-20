@@ -1,7 +1,6 @@
 package PageObjects;
 
 import Data.Constants;
-import Data.InvalidErrors;
 import Excel.ExcelReader;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
@@ -159,10 +158,10 @@ public class CreateAccountPage {
     public void VerifyMandatoryFieldsAlertInvalid() {
         HelperMethods.waitForElement(MandatoryFieldsAlert);
         String ErrorMessageInvalid = HelperMethods.getText(MandatoryFieldsAlert);
-        Assert.assertTrue(ErrorMessageInvalid.contains(InvalidErrors.FirstNameInvalid));
-        Assert.assertTrue(ErrorMessageInvalid.contains(InvalidErrors.LastNameInvalid));
-        Assert.assertTrue(ErrorMessageInvalid.contains(InvalidErrors.ZipCodeInvalid));
-        Assert.assertTrue(ErrorMessageInvalid.contains(InvalidErrors.PhoneNumberInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(Constants.FirstNameInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(Constants.LastNameInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(Constants.ZipCodeInvalid));
+        Assert.assertTrue(ErrorMessageInvalid.contains(Constants.PhoneNumberInvalid));
     }
 }
 

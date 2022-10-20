@@ -11,4 +11,15 @@ public class Constants {
     public static final String CityRequired = "city is required.";
     public static final String ZipCodeRequired = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";
     public static final String StateRequired = "This country requires you to choose a State.";
+
+    /////All invalid errors//////
+    public static final String LastNameInvalid = "lastname is invalid.";
+    public static final String FirstNameInvalid = "firstname is invalid.";
+    public static final String PhoneNumberInvalid = "phone_mobile is invalid.";
+    public static final String ZipCodeInvalid = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";
+
+
+    ////////////////////////////////////////
+    public static final String ProductName = "Faded Short Sleeve T-shirts";
 }
+
