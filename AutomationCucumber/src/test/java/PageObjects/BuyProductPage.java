@@ -44,6 +44,8 @@ public class BuyProductPage {
     By OrderCompletedMessage = By.xpath("//strong[normalize-space()='Your order on My Store is complete.']");
     By AddToWishlistBtn = By.xpath("//div[@class='wishlist']");
     By MustBeLoggedMessage = By.xpath("//p[@class='fancybox-error']");
+    By ChangeQuantityAfterCheckOut = By.xpath("//i[@class='icon-plus']");
+    By TotalPriceBox = By.id("total_price");
 
     public BuyProductPage(TestSetup driver) {
     }
@@ -125,11 +127,23 @@ public class BuyProductPage {
         HelperMethods.hoverElement(ProductBlock);
         HelperMethods.click(AddToWishlistBtn);
     }
+
     public void VerifyMustBeLoggedErrorMessage() {
+        HelperMethods.waitForElement(MustBeLoggedMessage);
+        String ErrorMessageIsDisplayed = HelperMethods.getText(MustBeLoggedMessage);
+        Assert.assertTrue(ErrorMessageIsDisplayed.contains(Constants.MustBeLoggedMessage));
+
+    }
+
+    public void ChangeTheQuantityInCheckOut() {
+        HelperMethods.waitForElement(ChangeQuantityAfterCheckOut);
+        HelperMethods.click(ChangeQuantityAfterCheckOut);
+        
+    }
+
+    public void VerifyTheTotalPrice() {
         HelperMethods.waitForElement(MustBeLoggedMessage);
         String ErrorMessageIsDisplayed = HelperMethods.getText(MustBeLoggedMessage);
         Assert.assertTrue(ErrorMessageIsDisplayed.contains(Constants.MustBeLoggedMessage));
     }
 }
-
-

@@ -25,5 +25,10 @@ public class Constants {
     public static final String Size = "L";
     public static final String OrderCompleted = "Your order on My Store is complete.";
     public static final String MustBeLoggedMessage = "You must be logged in to manage your wishlist.";
+
+    public static final String PriceOfPiece = "$18.51";
+
+    public static final String PriceOf2Pieces = "$35.02";
+
 }
 

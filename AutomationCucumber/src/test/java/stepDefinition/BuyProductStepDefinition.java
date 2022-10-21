@@ -76,4 +76,10 @@ public class BuyProductStepDefinition {
     public void userVerifyThatErrorMessageIsDisplayed() {
         BuyProductPage.VerifyMustBeLoggedErrorMessage();
     }
+
+    @Then("User verify quantity, select size M and select color")
+    public void userVerifyQuantitySelectSizeMAndSelectColor() {
+
+        if (userVerifyQuantitySelectSizeMAndSelectColor);
+    }
 }
