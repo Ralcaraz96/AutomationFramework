@@ -21,5 +21,8 @@ public class Constants {
 
     ////////////////////////////////////////
     public static final String ProductName = "Faded Short Sleeve T-shirts";
+    /////////////////
+    public static final String Size = "L";
+    public static final String OrderCompleted = "Your order on My Store is complete.";
 }
 
