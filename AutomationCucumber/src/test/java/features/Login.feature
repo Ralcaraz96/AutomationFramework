@@ -38,14 +38,13 @@ Feature: Application Login
       | Hoja1     |  | 0         |
 
 
-
   Scenario: 7.1 Verify that 'Add to Wishlist' only works after login
     Given User is on AutomationPractice page
     Then User move cursor over Women link and click on sub menu T-Shirts
     Then User move cursor hover the product and click on Add to Wishlist
     Then User verify that error message is displayed
 
-  Scenario Outline: 6. 'Buy Product' feature
+  Scenario Outline: 6. 'Buy Product' feature 2
     Given User is on AutomationPractice page
     When User click sign in.
     Then User logins using data from "<SheetName>" and <RowNumber>
@@ -53,8 +52,7 @@ Feature: Application Login
     Then User move cursor hover the product and click on More button
     Then User verify quantity, select size M and select color
     Then User click add to cart button and proceed to check out button
-    Then User change the quantity to 2
-    Then Verify that total price is changing and reflecting correct price
+    Then User change the quantity to two and Verify total price is correct
     Examples:
       | SheetName |  | RowNumber |
       | Hoja1     |  | 0         |

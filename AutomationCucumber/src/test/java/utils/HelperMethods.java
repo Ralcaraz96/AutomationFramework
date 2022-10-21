@@ -94,9 +94,20 @@ public class HelperMethods {
             Assert.fail();
         }
     }
-        public static void hoverElement(By by){
-            Actions actions = new Actions(driver);
-            actions.moveToElement(driver.findElement(by)).perform();
-        }
+
+    public static void hoverElement(By by) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(by)).perform();
     }
+
+    public static String getElementValue(By by) {
+        try {
+            return driver.findElement(by).getAttribute("value");
+        } catch (NoSuchElementException e) {
+            driver.close();
+            Assert.fail();
+        }
+        return driver.findElement(by).getAttribute("value");
+    }
+}
 

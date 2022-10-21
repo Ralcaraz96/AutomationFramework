@@ -79,7 +79,13 @@ public class BuyProductStepDefinition {
 
     @Then("User verify quantity, select size M and select color")
     public void userVerifyQuantitySelectSizeMAndSelectColor() {
+        BuyProductPage.VerifySingleItemQuantity();
+        BuyProductPage.ChangeSizeToMedium();
+        BuyProductPage.SetColorToBlue();
+    }
 
-        if (userVerifyQuantitySelectSizeMAndSelectColor);
+    @Then("User change the quantity to two and Verify total price is correct")
+    public void userChangeTheQuantityToTwoAndVerifyTotalPriceIsCorrect() {
+        BuyProductPage.ChangeTheQuantityInCheckOutAndVerifyTotalPrice();
     }
 }

@@ -2,8 +2,6 @@ package PageObjects;
 
 import Data.Constants;
 import Excel.ExcelReader;
-import io.cucumber.messages.types.Product;
-import lombok.experimental.Helper;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -11,7 +9,6 @@ import utils.GlobalProperties;
 import utils.HelperMethods;
 import utils.TestSetup;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +42,11 @@ public class BuyProductPage {
     By AddToWishlistBtn = By.xpath("//div[@class='wishlist']");
     By MustBeLoggedMessage = By.xpath("//p[@class='fancybox-error']");
     By ChangeQuantityAfterCheckOut = By.xpath("//i[@class='icon-plus']");
-    By TotalPriceBox = By.id("total_price");
+    By TotalPriceSingleItem = By.id("total_product_price_1_4_756379");
+    By QuantityTextBox = By.id("quantity_wanted");
+    By ShippingTax = By.id("total_shipping");
+    By TotalPrice = By.id("total_price");
+    By QuantityHeader = By.id("summary_products_quantity");
 
     public BuyProductPage(TestSetup driver) {
     }
@@ -92,7 +93,7 @@ public class BuyProductPage {
         HelperMethods.waitForElement(PlusQuantityBtn);
         HelperMethods.click(PlusQuantityBtn);
         HelperMethods.click(SizeDropdownBtn);
-        HelperMethods.selectDropdownByText(SizeDropdown, Constants.Size);
+        HelperMethods.selectDropdownByText(SizeDropdown, Constants.SizeLarge);
         HelperMethods.click(ColorBlueBox);
     }
 
@@ -135,15 +136,27 @@ public class BuyProductPage {
 
     }
 
-    public void ChangeTheQuantityInCheckOut() {
-        HelperMethods.waitForElement(ChangeQuantityAfterCheckOut);
-        HelperMethods.click(ChangeQuantityAfterCheckOut);
-        
+    public void VerifySingleItemQuantity() {
+        Assert.assertEquals(Constants.OneItemQuantity, HelperMethods.getElementValue(QuantityTextBox));
     }
 
-    public void VerifyTheTotalPrice() {
-        HelperMethods.waitForElement(MustBeLoggedMessage);
-        String ErrorMessageIsDisplayed = HelperMethods.getText(MustBeLoggedMessage);
-        Assert.assertTrue(ErrorMessageIsDisplayed.contains(Constants.MustBeLoggedMessage));
+    public void ChangeSizeToMedium() {
+        HelperMethods.click(SizeDropdownBtn);
+        HelperMethods.selectDropdownByText(SizeDropdown, Constants.SizeMedium);
+    }
+
+    public void SetColorToBlue() {
+        HelperMethods.click(ColorBlueBox);
+    }
+
+
+    public void ChangeTheQuantityInCheckOutAndVerifyTotalPrice() {
+        double unitPrice = Double.parseDouble((HelperMethods.getText(TotalPriceSingleItem).replace("$", "")));
+        HelperMethods.click(ChangeQuantityAfterCheckOut);
+        double quantity = Double.parseDouble(HelperMethods.getText(QuantityHeader).split(" ")[0]);
+        double shippingTax = Double.parseDouble(HelperMethods.getText(ShippingTax).replace("$", ""));
+        double totalPrice = Double.parseDouble(HelperMethods.getText(TotalPrice).replace("$", ""));
+        double totalPriceAndShipping = (unitPrice * quantity) + shippingTax;
+        Assert.assertEquals(totalPriceAndShipping, totalPrice, .001);
     }
 }
