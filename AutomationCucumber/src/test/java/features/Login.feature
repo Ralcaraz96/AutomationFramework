@@ -22,3 +22,17 @@ Feature: Application Login
     Examples:
       | SheetName   |  | RowNumber |
       | ProductName |  | 0         |
+
+  Scenario Outline: 6. 'Buy Product' feature
+    Given User is on AutomationPractice page
+    When User click sign in.
+    Then User logins using data from "<SheetName>" and <RowNumber>
+    Then User move cursor over Women link and click on sub menu T-Shirts
+    Then User move cursor hover the product and click on More button
+    Then User increase quantity, select size L and select color
+    Then User click add to cart button and proceed to check out button
+    Then User complete the buy order process till payment
+    Then User make sure that product is ordered
+    Examples:
+      | SheetName |  | RowNumber |
+      | Hoja1     |  | 0         |
