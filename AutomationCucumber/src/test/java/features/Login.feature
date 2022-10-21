@@ -36,3 +36,16 @@ Feature: Application Login
     Examples:
       | SheetName |  | RowNumber |
       | Hoja1     |  | 0         |
+
+
+
+  Scenario: 7.1 Verify that 'Add to Wishlist' only works after login
+    Given User is on AutomationPractice page
+    Then User move cursor over Women link and click on sub menu T-Shirts
+    Then User move cursor hover the product and click on Add to Wishlist
+    Then User verify that error message is displayed
+
+
+
+
+

@@ -41,9 +41,9 @@ public class BuyProductPage {
     By ProceedToCheckOutShippingBtn = By.xpath("//button[@name='processCarrier']//span[contains(text(),'Proceed to checkout')]");
     By PayByBankWireBtn = By.xpath("//a[@title='Pay by bank wire']");
     By IConfirmMyOrderBtn = By.xpath("//span[normalize-space()='I confirm my order']");
-    By ProductOrderedTextBox = By.xpath("//div[@class='box']");
     By OrderCompletedMessage = By.xpath("//strong[normalize-space()='Your order on My Store is complete.']");
-
+    By AddToWishlistBtn = By.xpath("//div[@class='wishlist']");
+    By MustBeLoggedMessage = By.xpath("//p[@class='fancybox-error']");
 
     public BuyProductPage(TestSetup driver) {
     }
@@ -118,6 +118,17 @@ public class BuyProductPage {
         HelperMethods.waitForElement(OrderCompletedMessage);
         String OrderIsComplete = HelperMethods.getText(OrderCompletedMessage);
         Assert.assertTrue(OrderIsComplete.contains(Constants.OrderCompleted));
+    }
+
+    public void AddToWishList() {
+        HelperMethods.waitForElement(ProductBlock);
+        HelperMethods.hoverElement(ProductBlock);
+        HelperMethods.click(AddToWishlistBtn);
+    }
+    public void VerifyMustBeLoggedErrorMessage() {
+        HelperMethods.waitForElement(MustBeLoggedMessage);
+        String ErrorMessageIsDisplayed = HelperMethods.getText(MustBeLoggedMessage);
+        Assert.assertTrue(ErrorMessageIsDisplayed.contains(Constants.MustBeLoggedMessage));
     }
 }
 

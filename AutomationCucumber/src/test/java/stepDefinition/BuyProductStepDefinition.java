@@ -20,6 +20,7 @@ public class BuyProductStepDefinition {
         this.testSetup = testSetup;
         this.BuyProductPage = testSetup.pageObjectManager.getBuyProductPage();
     }
+
     @Then("User move cursor over Women link and click on sub menu T-Shirts")
     public void userMoveCursorOverWomenLinkAndClickOnSubMenuTShirts() {
         BuyProductPage.MoveCursorOverWomenLinkAndClickOnSubmenu();
@@ -64,5 +65,15 @@ public class BuyProductStepDefinition {
     @Then("User make sure that product is ordered")
     public void userMakeSureThatProductIsOrdered() {
         BuyProductPage.VerifyOrderComplete();
+    }
+
+    @Then("User move cursor hover the product and click on Add to Wishlist")
+    public void userMoveCursorHoverTheProductAndClickOnAddToWishlist() {
+        BuyProductPage.AddToWishList();
+    }
+
+    @Then("User verify that error message is displayed")
+    public void userVerifyThatErrorMessageIsDisplayed() {
+        BuyProductPage.VerifyMustBeLoggedErrorMessage();
     }
 }
